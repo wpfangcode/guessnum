@@ -9,8 +9,8 @@ void check(int target, int test,int* cguessC);
 
 int main()
 {
-  cout<<"student id"<<endl;
-  cout<<"name"<<endl;
+  cout<<"1102045"<<endl;
+  cout<<"陳威丞"<<endl;
   //----------------------
   cout<<"demo"<<endl;
   return 1;
