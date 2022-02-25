@@ -51,15 +51,16 @@ int countA(int n)
 	split(n, N);
 	set(N2);
 	for (int i = 0; i <= 3; i++) {
-		for (int j = n + 1; j <= 3; j++) {
-			if (N[i] == N2[i]) {
+		if (N[i] == N2[i]) {
 				a++;
-			}
-			else if (N[i]==N2[j]) {
+		}
+		for (int j = 0; j <=3 ; j++) {
+			if (N[i]==N2[j]) {
 				b++;
 			}
 		}
 	}
+	b = b - a;
 }
 void test1()
 {
