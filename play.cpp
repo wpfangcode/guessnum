@@ -1,6 +1,8 @@
 #include <iostream>
 #include<string>
 using namespace std;
+
+
 void split(int n, int N[]) {
     N[0] = n / 1000;
     N[1] = (n / 100) % 10;
@@ -13,21 +15,17 @@ bool isRepeat(int N[]) {
     else
         return true;
 }
+
+
 int main()
 {
-    
-  cout<<"1092044"<<endl;
-  cout<<"林悅福"<<endl;
-  cout<<"------------------------------"<<endl;
-  cout<<"so easy"<<endl;
-  
-  cout<<"pls input your answer"<<endl;
-  int N[4];
+    int N[4];
     int M[4];
     int T[3025];
     int S[3025];
     int set = 1000;
     int count = 1;
+    //把重複跟有0的過濾
     for (int i = 0; i < 3024; i++) {
             T[i] = set;
             split(T[i], N);
@@ -50,7 +48,7 @@ int main()
     bool finish = false;
     split(input, M);
 
-    
+    //計算所有資料庫中數字的幾A幾B
     while (finish == false) {
         int set2 = 0;
         //--------------------------------calA
@@ -102,6 +100,7 @@ int main()
         int tempA = Avalue[0];
         int tempB = Bvalue[0];
         cout << tempA << "A" << "   " << tempB << "B" << endl;
+        //找到比當前猜的更好
         for (int x = 1; x < 3024; x++) {
             if (Avalue[x] >= tempA)   
             {
@@ -120,4 +119,5 @@ int main()
         }
         count++;
     }
-}
+    
+    }
