@@ -1,85 +1,106 @@
 #include <iostream>
 using namespace std;
+void split(int n, int N[]);
+bool nozero(int n);
+bool norepeat(int n);
+void check(int t, int test, int* checkA, int* checkB);
 int main()
 {
-    cout<<"1102056<<endl;
-    cout<<"洪慈惠"<<endl;
-    int i, n, a, b, c, d, A, B;
-    cin >> n;
-    i = 1;
+    cout<<"1102056"<<endl;
+    cout<<"洪慈惠"<<
+	int a=0;
+	int b=0;
+	int allnum[3024] = { 0 };
 
-    //把數字拆成a、b、c、d
-    a = ((n / 10) / 10) / 10;   //千位數
-    b = ((n / 10) / 10) % 10;   //百位數
-    c = (n / 10) % 10;          //十位數
-    d = n % 10;                 //個位數
+	int num = 1234;
 
-    while (cin >> i)  //我們猜得值
-    {
-        A = 0;
-        B = 0;
-        
-        
+	for (int i = 0; num < 9876; num++)
+	{
+		if (nozero(num) && norepeat(num))
+		{
+			allnum[i] = num;
+			i++;
+		}
+	}
 
-        if (i == 0)
-        {
-            cout << A << "A" << B << "B" << endl;
-        }
-        else if (i != 0)
-        {
-            for (int j = 0; j < 4; j++)    //j=0個位數j=1十位數j=2百位數j=3千位數
-            {
-                if (i % 10 == a)  //1234%10=a=4
-                {
-                    if (j == 3)   //位置
-                    {
-                        A++;
-                    }
-                    else
-                    {
-                        B++;
-                    }
-                }
-                else if (i % 10 == b)  //123%10=b=3
-                {
-                    if (j == 2)
-                    {
-                        A++;
-                    }
-                    else
-                    {
-                        B++;
-                    }
-                }
-                else if (i % 10 == c)  //12%10=c=2
-                {
-                    if (j == 1)
-                    {
-                        A++;
-                    }
-                    else
-                    {
-                        B++;
-                    }
-                }
-                else if (i % 10 == d)  //1%10=d=1
-                {
-                    if (j == 0)
-                    {
-                        A++;
-                    }
-                    else
-                    {
-                        B++;
-                    }
-                }
-                i = i / 10;
-                if (j == 3)
-                {
-                    cout << A << "A" << B << "B" << endl;
-                }
-            }
-        }
-    }
-    return 0;
+	int g;
+	while (a != 4) //a=4時,遊戲結束
+	{
+		for (int i = 0; i < 3024; i++)
+		{
+			if (allnum[i] != -1)
+			{
+				g = allnum[i];
+				cout << "電腦猜:"<<g << endl;
+				allnum[i] = -1;
+				break;
+			}
+		}
+		cout << "A:";
+		cin >> a;
+		cout << "B:";
+		cin >> b;
+
+		int checkA;
+		int checkB;
+		for (int i = 0; i < 3024; i++)
+		{
+			if (allnum[i] != -1)
+			{
+				check(g, allnum[i], &checkA, &checkB);
+				if (checkA != a || checkB != b)
+					allnum[i] = -1;
+			}
+		}
+	}
+	return 0;
+}
+void split(int n, int N[])
+{
+	N[0] = n / 1000;
+	N[1] = (n / 100) % 10;
+	N[2] = (n / 10) % 10;
+	N[3] = n % 10;
+}
+bool nozero(int n)
+{
+	int N[4];
+	split(n, N);
+	return (N[0] != 0 && N[1] != 0 && N[2] != 0 && N[3] != 0); 
+bool norepeat(int n)
+{
+	int N[4];
+	split(n, N);
+	int a[10] = { 0,1,2,3,4,5,6,7,8,9 };
+	for (int i = 0; i < 4; i++)
+	{
+		if (a[N[i]] == -1)
+			return false;
+		else
+			a[N[i]] = -1;
+	}
+	return true;
+}
+void check(int t, int test, int* checkA, int* checkB)
+{
+	*checkA = 0;
+	*checkB = 0;
+
+	int T[4];
+	int TEST[4];
+	split(t, T);
+	split(test, TEST);
+	int a[10] = { 0,1,2,3,4,5,6,7,8,9 };
+	for (int i = 0; i < 4; i++)
+		a[T[i]] = -1; 
+	for (int i = 0; i < 4; i++)
+	{
+		if (a[TEST[i]] == -1) 
+		{
+			if (TEST[i] == T[i]) 
+				*checkA += 1;
+			else 
+				*checkB += 1;
+		}
+	}
 }
