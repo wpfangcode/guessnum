@@ -63,7 +63,7 @@ int main()
 			}
 		}
 	}
-	cout<<"答案為:"<<ans<<endl; 
+  cout<<"答案為:"<<ans<<endl; 
   cout<<"1102030"<<endl;
   cout<<"陳東科"<<endl;
   return 1;
