@@ -15,12 +15,13 @@ bool isRepeat(int N[]) {
 }
 int main()
 {
+    
   cout<<"1092044"<<endl;
   cout<<"林悅福"<<endl;
   cout<<"------------------------------"<<endl;
   cout<<"so easy"<<endl;
   
-  
+  cout<<"pls input your answer"<<endl;
   int N[4];
     int M[4];
     int T[3025];
