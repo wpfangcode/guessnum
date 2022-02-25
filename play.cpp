@@ -7,7 +7,7 @@ void check(int t, int test, int* checkA, int* checkB);
 int main()
 {
     cout<<"1102056"<<endl;
-    cout<<"洪慈惠"<<
+    cout<<"洪慈惠"<<endl;
 	int a=0;
 	int b=0;
 	int allnum[3024] = { 0 };
