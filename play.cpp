@@ -36,6 +36,8 @@ bool noRepeat(int i)
 
 int main()
 {
+	cout<<"1102031"<<endl;
+	cout<<"黃舒榆"<<endl;
 	cout << "Ans:4896";
 	int allnumbers[3100] = { 0 }; //建立一個全部數字的列表
 	int n= 1234; //數字從1234開始
