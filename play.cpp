@@ -85,6 +85,9 @@ int main()
 {
   cout<<"1102043"<<endl;
   cout<<"林益綺"<<endl;
+  //-----------------------
+  cout<<"demo"<<endl;
+  return 1;
     int a = 0, b = 0;
     int all[3024] = { 0 };
     //列表內宗共有3024種組合
