@@ -60,7 +60,6 @@ int countA(int n)
 			}
 		}
 	}
-	return a;
 }
 void test1()
 {
