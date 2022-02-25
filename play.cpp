@@ -11,12 +11,12 @@ int main()
 {
   cout<<"student id"<<endl;
   cout<<"name"<<endl;
-  //-----------------------
+  //----------------------
   cout<<"demo"<<endl;
   return 1;
   
-  //-----------------------
-	int a = 0, b = 0;
+  //----------------------
+	int a = 0, b = 0 ;
 	int allNumbers[3024] = { 0 };
 
 	int num = 1234;
