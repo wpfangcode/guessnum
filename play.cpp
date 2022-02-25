@@ -8,6 +8,8 @@ void check(int target, int test, int* checkA, int* checkB);
 
 int main()
 {
+    cout<<"1102032"<<endl;
+    cout<<"張芳語"<<
     int a = 0, b = 0;
     int allnumbers[3024] = { 0 };
 
