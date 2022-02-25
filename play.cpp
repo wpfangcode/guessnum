@@ -57,10 +57,10 @@ void decideAB(int computer, int dataTest, int *decideA, int *decideB)//以一個
         mark[comArray[i]] = -1;//假設computer輸出1234，mark={0,-1,-1,-1,-1,5,6,7,8,9}
         if (mark[testArray[i]]==-1)//先判斷電腦猜的array和測試的array是否有重複數字
         {
-            if (comArray[i] = testArray[i])//如果位置相同
-                decideA = decideA + 1;//A就加1
+            if (comArray[i] == testArray[i])//如果位置相同
+                *decideA = *decideA + 1;//A就加1
             else
-                decideB = decideB + 1;//位置不相同 B就加1
+                *decideB = *decideB + 1;//位置不相同 B就加1
         }
     }
 }
@@ -118,6 +118,6 @@ int main()
             }
         }
     }
-    cout << "Answer is" << guess << endl;
+    cout << "Answer is :" << guess << endl;
     return 0;
 }
