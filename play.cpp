@@ -30,8 +30,8 @@ bool check(int a, int b)
 }
 int main()
 {
-  cout<<"student id"<<endl;
-  cout<<"name"<<endl;
+  cout<<"1102025"<<endl;
+  cout<<"林成翰"<<endl;
   //-----------------------
   int N[4];
     int a = 0, b = 0;
