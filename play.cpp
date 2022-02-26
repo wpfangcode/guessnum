@@ -71,7 +71,7 @@ int main()
 	cout<<"蕭家證"<<endl;
     int allnumber[3024] = { 0 };
     int i;
-    int guess, guess2;
+    int guess;
     int finda, findb;
     int k = 0;
 
@@ -93,7 +93,6 @@ int main()
                 guess = allnumber[i];
                 cout << "電腦猜:" << guess << endl;
                 allnumber[i] = -1;
-                guess2 = guess;
                 break;
             }
         }
