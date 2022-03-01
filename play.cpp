@@ -4,6 +4,7 @@ using namespace std;
 
 class Guess {
 public:
+	//建構子，初始化data[],移除1234~9876中所有含有零及有數字重複的數
 	Guess() {
 		int i = 0;
 		int first = 1234;
@@ -18,11 +19,11 @@ public:
 		}
 		size = i;
 	}
+	//移除不可能的答案
 	void Think(int a, int b) {
 		int _ans[4];
 		int _data[4];
 		int count = 0;
-		int diff = 0;
 		int same = 0;
 		int check = 0;
 		temp = new int[size];
@@ -51,9 +52,11 @@ public:
 							if (i == j) {
 								same++;
 								check++;
+								break;
 							}
 							else {
 								same++;
+								break;
 							}
 							break;
 						}
@@ -76,6 +79,7 @@ public:
 							}
 							else {
 								same++;
+								break;
 							}
 							break;
 						}
@@ -98,6 +102,7 @@ public:
 							}
 							else {
 								same++;
+								break;
 							}
 							if (same > 1) break;
 						}
@@ -115,9 +120,11 @@ public:
 						if (_data[i] == _ans[j]) {
 							if (i == j) {
 								same++;
+								break;
 							}
 							else {
 								check++;
+								break;
 							}
 							if (same > 0) break;
 						}
@@ -135,9 +142,11 @@ public:
 						if (_data[i] == _ans[j]) {
 							if (i == j) {
 								same++;
+								break;
 							}
 							else {
 								check++;
+								break;
 							}
 							if (same > 1 || check > 1) break;
 						}
@@ -160,6 +169,7 @@ public:
 							}
 							else {
 								same++;
+								break;
 							}
 							if (same > 3) break;
 						}
@@ -177,9 +187,11 @@ public:
 						if (_data[i] == _ans[j]) {
 							if (i == j) {
 								same++;
+								break;
 							}
 							else {
 								check++;
+								break;
 							}
 							if (same > 0) break;
 						}
@@ -197,9 +209,11 @@ public:
 						if (_data[i] == _ans[j]) {
 							if (i == j) {
 								same++;
+								break;
 							}
 							else {
 								check++;
+								break;
 							}
 							if (same > 2 || check > 1) break;
 						}
@@ -217,9 +231,11 @@ public:
 						if (_data[i] == _ans[j]) {
 							if (i == j) {
 								same++;
+								break;
 							}
 							else {
 								check++;
+								break;
 							}
 							if (same > 1 || check > 2) break;
 						}
@@ -233,7 +249,7 @@ public:
 			}
 			else if (a == 4 && b == 0) {
 				isOver = true;
-				cout << "Bingo 答對囉" << endl;
+				cout << "嘿嘿 Bingo 答對囉" << endl;
 				return;
 			}
 			else if (a == 0 && b == 4) {
@@ -298,6 +314,7 @@ public:
 			}
 			else {
 				cout << "輸入錯誤，請重新輸入" << endl;
+				inputFailed = true;
 				return;
 			}
 			same = 0;
@@ -312,29 +329,36 @@ public:
 		delete[] temp;
 		round++;
 	}
+	//從data[]中隨機給一個答案
 	void Answer() {
 		if (size == 0) {
 			cout << "你作弊！" << endl;
 			isOver = true;
 			return;
 		}
-		cout << "還有" << size << endl;
-		ans = data[Random(size)];
+		cout << "還有" << size << "個可能" << endl;
+		ans = data[inputFailed ? lastRand : Random(size)];
+		inputFailed = false;
 		cout << "round " << round << " : " << "答案是 " << ans << endl;
 	}
+	//回傳當前遊戲是否結束
 	bool Playing() {
 		return !isOver;
 	}
 private:
 	bool isOver = false;
+	bool inputFailed = false;
 	int size;
 	int ans = 0;
+	int lastRand = 0;
 	int round = 1;
 	int* data = new int[3024];
 	int* temp;
+	//檢查有沒有零
 	bool noZero(int num[]) {
 		return num[0] && num[1] && num[2] && num[3];
 	}
+	//檢查有沒有重複
 	bool noRepeat(int num[]) {
 		for (int i = 0; i < 4; i++) {
 			for (int j = i + 1; j < 4; j++) {
@@ -345,19 +369,19 @@ private:
 		}
 		return true;
 	}
-	int Random(int num) {
-		if (num == 1) {
-			return 0;
-		}
-		srand(time(NULL));
-		int n = rand() % num;
-		return n;
+	//隨機生成一個介於0~size之間的數
+	int Random(int size) {
+		srand((unsigned)time(NULL) * 100);
+		int num = rand() % size;
+		lastRand = num;
+		return num;
 	}
-	void Spilt(int n, int* num) {
-		num[0] = n / 1000;
-		num[1] = (n / 100) % 10;
-		num[2] = (n / 10) % 10;
-		num[3] = n % 10;
+	//將傳入的四位數拆分成四個數字並存入指定陣列
+	void Spilt(int num, int* _array) {
+		_array[0] = num / 1000;
+		_array[1] = (num / 100) % 10;
+		_array[2] = (num / 10) % 10;
+		_array[3] = num % 10;
 	}
 };
 int main()
