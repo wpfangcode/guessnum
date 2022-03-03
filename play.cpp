@@ -2,8 +2,8 @@
 using namespace std;
 int main()
 {
-  cout<<"student id"<<endl;
-  cout<<"name"<<endl;
+  cout<<"1072015"<<endl;
+  cout<<"黃翰強"<<endl;
   //-----------------------
   cout<<"demo"<<endl;
   return 1;
