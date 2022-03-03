@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void split(int n, int N[]) //spilt number
+void split (int n, int N[]) //spilt number
 {
 	N[0] = n / 1000;
 	N[1] = (n / 100) % 10;
