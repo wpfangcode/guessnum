@@ -2,9 +2,10 @@
 using namespace std;
 int main()
 {
-  cout<<"student id"<<endl;
-  cout<<"name"<<endl;
+  cout<<"1072017"<<endl;
+  cout<<"連彥霆"<<endl;
   //-----------------------
   cout<<"demo"<<endl;
   return 1;
+  
 }
