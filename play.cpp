@@ -34,7 +34,29 @@ bool norepeat(int n)
 	else
 		return true;
 }
+void check(int first, int test, int* checkA, int* checkB)
+{
+	*checkA = 0;
+	*checkB = 0;
+	int firstN[4];
+	int testN[4];
+	spilt(first, firstN);
+	spilt(test, testN);
 
+	int A[10] = { 0,1,2,3,4,5,6,7,8,9 };
+	for (int i = 0; i < 4; i++)
+		A[firstN[i]] = -1;
+	for (int i = 0; i < 4; i++)
+	{
+		if (A[testN[i]] == -1)
+		{
+			if (testN[i] == firstN[i])
+				*checkA = *checkA + 1;
+			else
+				*checkB = *checkB + 1;
+		}
+	}
+}
 int main()
 {
   cout<<"1102035"<<endl;
@@ -68,6 +90,16 @@ int main()
 		cout << "B:";
 		cin >> b;
 		cout<< endl;
+		int checkA, checkB;
+		for (int i = 0; i < 3024; i++)
+		{
+			if (N[i] != 0)
+			{
+				check(guess, N[i], &checkA, &checkB);
+				if (checkA != a || checkB != b)
+					N[i] = 0;
+			}
+		}
 	}
 	cout << "The Final Answer is:" << guess << endl;
 	return 0;
