@@ -22,13 +22,13 @@ public:
 	//移除不可能的答案
 	void Think(int a, int b) {
 		if (a > 4 || b > 4 || a < 0 || b < 0 || a + b > 4 || a + b < 0) {
-			cout << "輸入錯誤，請重新輸入" << endl;
+			cout << "ERROR" << endl;
 			inputFailed = true;
 			return;
 		}
 		if (a == 4) {
 			isOver = true;
-			cout << "嘿嘿 Bingo 答對囉" << endl;
+			cout << "Bingo" << endl;
 			return;
 		}
 		int i, j, k;
@@ -71,14 +71,14 @@ public:
 	//從data[]中隨機給一個答案
 	void Answer() {
 		if (size == 0) {
-			cout << "你作弊！" << endl;
+			cout << "You cheat!" << endl;
 			isOver = true;
 			return;
 		}
-		cout << "還有" << size << "個可能" << endl;
+		cout << size-1 << " possibilities left" << endl;
 		ans = data[inputFailed ? lastRand : Random(size)];
 		inputFailed = false;
-		cout << "round " << round << " : " << "答案是 " << ans << endl;
+		cout << "round " << round << " : " << "Ans " << ans << endl;
 	}
 	//回傳當前遊戲是否結束
 	bool Playing() {
@@ -139,8 +139,8 @@ Restart:
 		cout << "---------------------" << endl;
 		guess->Think(a, b);
 	}
-	cout << "遊戲結束" << endl;
-	cout << "繼續新的一局?(y/n)" << endl;
+	cout << "Game Over" << endl;
+	cout << "Play again?(y/n)" << endl;
 	char c;
 	while (cin >> c) {
 		if (c == 'y' || c == 'Y') {
